@@ -31,50 +31,60 @@
 
 @section('main')
 @include('partial.content-header',['header'=>'Role Manager','sub_header'=>'Add, Edit and Delete Role'])
-<div class="panel panel-default">
-    <div class="panel-heading">@lang('aliukevicius/laravelRbac::lang.role.indexPageTitle')</div>
-    <div class="panel-body">
-        <a href="{{ \URL::action('\\' . \Config::get('laravel-rbac.roleController') . '@create') }}" class="btn btn-success">
-            <i class="glyphicon glyphicon-plus"></i> @lang('aliukevicius/laravelRbac::lang.role.addRoleBtn')
-        </a>
 
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>@lang('aliukevicius/laravelRbac::lang.role.id')</th>
-                <th>@lang('aliukevicius/laravelRbac::lang.role.name')</th>
-                <th colspan="2">@lang('aliukevicius/laravelRbac::lang.role.description')</th>
-            </tr>
-            </thead>
+{{-- Start Row --}}
+<div class="row">
+	{{-- Start Col --}}
+	<div class="col-lg-12">
+		<div>
+			@lang('aliukevicius/laravelRbac::lang.role.indexPageTitle')
+		</div>
+		{{-- Start Button Add New Role --}}
+		<a href="{{ \URL::action('\\' . \Config::get('laravel-rbac.roleController') . '@create') }}" class="btn btn-success">
+			<i class="glyphicon glyphicon-plus"></i> @lang('aliukevicius/laravelRbac::lang.role.addRoleBtn')
+		</a>
+		{{-- End Button Add New Role --}}
 
-            @foreach($list as $role)
-                <tr>
-                    <td>{{ $role->id }}</td>
-                    <td>{{ $role->name }}</td>
-                    <td>{{ $role->description }}</td>
-                    <td class="actions">
-                        <div class="pull-right">
-                            <a href="{{ \URL::action('\\' . \Config::get('laravel-rbac.roleController') . '@edit', ['roles' => $role->id]) }}">
-                                <i class="glyphicon glyphicon-edit"></i>
-                            </a>
+		{{-- Start Table --}}
+		<table class="table table-striped">
+			<thead>
+			<tr>
+				<th>@lang('aliukevicius/laravelRbac::lang.role.id')</th>
+				<th>@lang('aliukevicius/laravelRbac::lang.role.name')</th>
+				<th colspan="2">@lang('aliukevicius/laravelRbac::lang.role.description')</th>
+			</tr>
+			</thead>
 
-                            <a
-                                href="{{ \URL::action('\\' . \Config::get('laravel-rbac.roleController') . '@destroy', ['roles' => $role->id]) }}"
-                                class="deleteRole"
-                                >
-                                <i class="glyphicon glyphicon-remove"></i>
-                            </a>
+			@foreach($list as $role)
+				<tr>
+					<td>{{ $role->id }}</td>
+					<td>{{ $role->name }}</td>
+					<td>{{ $role->description }}</td>
+					<td class="actions">
+						<div class="pull-right">
+							<a href="{{ \URL::action('\\' . \Config::get('laravel-rbac.roleController') . '@edit', ['roles' => $role->id]) }}">
+								<i class="glyphicon glyphicon-edit"></i>
+							</a>
 
-                        </div>
-                    </td>
-                </tr>
-            @endforeach
-        </table>
+							<a
+								href="{{ \URL::action('\\' . \Config::get('laravel-rbac.roleController') . '@destroy', ['roles' => $role->id]) }}"
+								class="deleteRole"
+								>
+								<i class="glyphicon glyphicon-remove"></i>
+							</a>
 
-        {!! $list->render() !!}
-    </div>
+						</div>
+					</td>
+				</tr>
+			@endforeach
+		</table>
+		{{-- End Table --}}
+
+		{!! $list->render() !!}
+	</div>
+	{{-- End Col --}}
 </div>
-
+{{-- End Row --}}
 
 <div class="modal fade" role="dialog" id="deleteConfirmationModal">
     <div class="modal-dialog">

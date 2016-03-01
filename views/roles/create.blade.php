@@ -2,9 +2,11 @@
 
 @section('main')
 @include('partial.content-header',['header'=>'Role Manager','sub_header'=>'Add Role'])
-<div class="panel panel-default">
-    <div class="panel-heading">@lang('aliukevicius/laravelRbac::lang.role.createPageTitle')</div>
-    <div class="panel-body">
+{{-- Start Row --}}
+<div class="row">
+	{{-- Start Col --}}
+	<div class="col-lg-6">
+		<h3>@lang('aliukevicius/laravelRbac::lang.role.createPageTitle')</h3>
         <form action="{!! $formAction !!}" method="POST">
             <input type="hidden" name="_token" value="{!! csrf_token(); !!}">
 
@@ -30,6 +32,8 @@
 
             <button type="submit" class="btn btn-primary">@lang('aliukevicius/laravelRbac::lang.role.createRoleBtn')</button>
         </form>
-    </div>
+	</div>
+	{{-- End Col --}}
 </div>
+{{-- End Row --}}
 @stop

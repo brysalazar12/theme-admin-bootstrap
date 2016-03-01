@@ -46,7 +46,11 @@
 				@include('partial.left-menu')
 				<!-- /.navbar-collapse -->
 			</nav>
-			@yield('main')
+			<div id="page-wrapper">
+				<div class="container-fluid">
+					@yield('main')
+				</div>
+			</div>
 		</div>
 
 		<div id="diag"></div>
