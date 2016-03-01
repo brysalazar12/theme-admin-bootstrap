@@ -1,0 +1,7 @@
+{
+	"name": "brysalazar12/admin-theme-bootstrap",
+	"type": "laravel-theme",
+	"extra": {
+		"installer-name": "admin/bootstrap"
+	}
+}
